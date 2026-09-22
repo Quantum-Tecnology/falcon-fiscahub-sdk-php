@@ -1,0 +1,57 @@
+{
+  "name": "quantumtecnology/falcon-fiscalhub-sdk",
+  "description": "PHP SDK for the Falcon Fiscal Hub API — issue, query and cancel Brazilian service invoices (NFS-e, padrão nacional)",
+  "license": "MIT",
+  "type": "library",
+  "keywords": [
+    "falcon",
+    "fiscalhub",
+    "nfse",
+    "nfs-e",
+    "nota-fiscal",
+    "danfse",
+    "invoice",
+    "api",
+    "sdk"
+  ],
+  "homepage": "https://github.com/Quantum-Tecnology/falcon-fiscahub-sdk-php",
+  "authors": [
+    {
+      "name": "Luis Gustavo Santarosa",
+      "email": "gustavo-computacao@hotmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "suggest": {
+    "psr/simple-cache": "For persistent token caching (PSR-16)",
+    "psr/log": "For logging HTTP requests (PSR-3)"
+  },
+  "autoload": {
+    "psr-4": {
+      "QuantumTecnology\\FalconFiscalHub\\": "src/"
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require-dev": {
+    "pestphp/pest": "^2.0 || ^3.0"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "QuantumTecnology\\FalconFiscalHub\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "pest"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
+}
