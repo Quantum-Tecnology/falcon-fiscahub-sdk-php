@@ -8,6 +8,8 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
 
 ## [Não lançado]
 
+## [1.0.1] - 2026-09-27
+
 ### Corrigido
 
 - **CNPJ alfanumérico apagado na busca de pessoa** (IN RFB 2.229/2024 · NT 2026.004). `persons()->findByDocument()` limpava o documento com `\D`, que apaga letras: um tomador com CNPJ novo nunca era encontrado, e o `findOrCreate` cadastrava duplicata a cada nota (gastando o limite do plano). Novo `sanitizeDocument()` (maiúsculas, `[A-Z0-9]`).
