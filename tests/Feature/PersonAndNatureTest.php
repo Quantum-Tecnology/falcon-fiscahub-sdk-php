@@ -17,6 +17,16 @@ it('acha o tomador pelo documento, ignorando pontuação', function (): void {
         ->and($http->lastCall()['payload']['filter'])->toBe(['document' => '12345678901']);
 });
 
+it('acha o tomador pelo CNPJ alfanumérico sem apagar as letras (NT 2026.004)', function (): void {
+    [$persons, $http] = resourceWithFake(PersonResource::class);
+
+    $http->queue(200, ['data' => [['id' => 'p-2', 'cnpj' => '12ABC34501DE35']]]);
+
+    $persons->findByDocument('12.abc.345/01de-35');
+
+    expect($http->lastCall()['payload']['filter'])->toBe(['document' => '12ABC34501DE35']);
+});
+
 it('findOrCreate reaproveita quem já existe, sem cadastrar de novo', function (): void {
     [$persons, $http] = resourceWithFake(PersonResource::class);
 

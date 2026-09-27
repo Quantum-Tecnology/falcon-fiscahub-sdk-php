@@ -232,4 +232,14 @@ abstract class AbstractResource
     {
         return preg_replace('/\D/', '', $value) ?? $value;
     }
+
+    /**
+     * CPF/CNPJ sem máscara: maiúsculas, só [A-Z0-9]. Desde julho/2026 o CNPJ
+     * pode ter letras (IN RFB 2.229/2024 · NT 2026.004) — `sanitizeDigits`
+     * as apagaria e a busca voltaria vazia (e o chamador criaria duplicata).
+     */
+    protected function sanitizeDocument(string $value): string
+    {
+        return mb_strtoupper(preg_replace('/[^A-Za-z0-9]/', '', $value) ?? $value);
+    }
 }

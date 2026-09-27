@@ -27,7 +27,7 @@ final class PersonResource extends AbstractResource
      */
     public function findByDocument(string $document): ?array
     {
-        $digits = $this->sanitizeDigits($document);
+        $digits = $this->sanitizeDocument($document);
 
         if ('' === $digits) {
             return null;

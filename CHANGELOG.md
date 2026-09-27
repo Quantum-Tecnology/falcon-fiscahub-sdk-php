@@ -6,6 +6,14 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o 
 
 **Publicar uma versão tem três passos:** atualizar este arquivo, criar a tag no GitHub e conferir que ela chegou ao Packagist. Consumidores travam a versão no `composer.lock`, então a correção só chega a cada serviço depois de um `composer update` lá.
 
+## [Não lançado]
+
+## [1.0.1] - 2026-09-27
+
+### Corrigido
+
+- **CNPJ alfanumérico apagado na busca de pessoa** (IN RFB 2.229/2024 · NT 2026.004). `persons()->findByDocument()` limpava o documento com `\D`, que apaga letras: um tomador com CNPJ novo nunca era encontrado, e o `findOrCreate` cadastrava duplicata a cada nota (gastando o limite do plano). Novo `sanitizeDocument()` (maiúsculas, `[A-Z0-9]`).
+
 ## [1.0.0] - 2026-09-22
 
 ### Adicionado
